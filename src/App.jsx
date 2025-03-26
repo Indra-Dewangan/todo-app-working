@@ -45,6 +45,13 @@ function App() {
     )
       
    }
+
+   const edittodo = (todoid) => {
+    
+     
+      settodos((currenttodos) => currenttodos.map((todo) =>  
+        todo.id === todoid ? {...todo,title : input} : todo ))
+   }
   
   
   console.log(todos);
@@ -64,7 +71,9 @@ function App() {
           <li key={todo.id} complete={todo.complete}> 
             <label><input checked={todo.Completed} onChange={() => togglecompletion(todo.id)} type='checkbox'/> {todo.title} {todo.complete}</label>
           <button onClick={() => deletetodo(todo.id)} 
-           style={{color:"red"}} > Delete</button>
+          style={{color:"red"}} > Delete</button>
+           <button onClick={() => edittodo(todo.id)} 
+          style={{color:"green"}} > Edit Todo</button>
            
            </li>
        </ul> 
